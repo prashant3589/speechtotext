@@ -2,7 +2,7 @@
   <ion-navbar [color]="isRecording ? 'danger' : 'primary'">
     <ion-title>
       Listen to Me
-      <button ion-fab right (click)="startListening()"><ion-icon name="logo-facebook"></ion-icon></button>
+      <button ion-fab right (click)="startListening()"><ion-icon name="mic"></ion-icon></button>
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -17,9 +17,6 @@
           </ion-list>
         </ion-card-content>
       </ion-card>
-
+      <textarea ng-model="matches"></textarea>
 </ion-content>
-	<!--<button ion-button full (click)="getPermission()">Get Permission</button>
-	<button ion-button full (click)="startListening()">Start Listening</button>
-	<button ion-button full (click)="stopListening()" *ngIf="isIos()">Stop Listening</button>-->
 
