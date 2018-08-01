@@ -1,20 +1,26 @@
 <ion-header>
-  <ion-navbar [color]="isRecording ? 'danger' : 'primary'">
+  <ion-navbar [color]="'primary'">
     <ion-title>
-      <button ion-fab right (click)="startListening()"><ion-icon name="mic"></ion-icon></button>
+      <button ion-fab left (click)="save()" class="fabicon">
+        Save
+      </button>
+      <button ion-fab right (click)="startListening()" class="fabicon">
+        <ion-icon name="mic"></ion-icon>
+      </button>
+
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-    <ion-card>
-        <ion-card-content>
-          <ion-list>
-            <ion-item *ngFor="let match of matches">
-              {{ match }}
-            </ion-item>
-          </ion-list>
-        </ion-card-content>
-      </ion-card>
-</ion-content>
+  <textarea rows=5 cols=40 class="txtarea">{{match}}</textarea>
+  <button ion-button (click)="push()">Push</button>
+  <button ion-button right (click)="pop()">Pop</button>
+  
+  <ion-card>
+    <ion-card-content>
+      {{savecontent}}
+    </ion-card-content>
+  </ion-card>
 
+</ion-content>
