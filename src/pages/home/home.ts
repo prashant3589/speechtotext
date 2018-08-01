@@ -15,7 +15,7 @@ export class HomePage {
   savecontent :String;
   constructor(public navCtrl: NavController, private speechRecognition: SpeechRecognition, private plt: Platform, private cd: ChangeDetectorRef) {
     this.getPermission();
-    this.savecontent='';    
+    this.savecontent=' ';    
   }
 
   isIos() {
@@ -61,14 +61,17 @@ export class HomePage {
   {
     this.match='';
   }
-    this.savecontent=this.savecontent.concat(this.match);
+    this.savecontent=this.savecontent+this.match;
   }
   pop()
   {
     if(this.savecontent.length>0)
     {
-      this.savecontent.replace(this.match,'');
+      var startindex=this.savecontent.indexOf(this.match);
+    console.log(startindex);
+    console.log(this.match);
       
+    this.savecontent=this.savecontent.slice(0,startindex);
     }
   }
   save()
