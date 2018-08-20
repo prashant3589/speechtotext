@@ -1,13 +1,16 @@
 <ion-header>
-  <ion-navbar [color]="'primary'">
+  <ion-navbar [color]="isRecording ? 'green' : 'primary'">
     <ion-title>
-      <button ion-fab left (click)="save()" class="fabicon">
-        Save
-      </button>
-      <button ion-fab right (click)="startListening()" class="fabicon">
+     
+      <button ion-fab (click)="startListening()" class="fabicon">
         <ion-icon name="mic"></ion-icon>
       </button>
-
+      <ion-item>
+        <ion-label>Language</ion-label>
+        <ion-select [(ngModel)]="language">
+          <ion-option *ngFor="let lang of languageload" value="{{lang.value}}">{{lang.key}}</ion-option>
+        </ion-select>
+      </ion-item>
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -22,5 +25,9 @@
       {{savecontent}}
     </ion-card-content>
   </ion-card>
-
+  <ion-buttons>
+  <button ion-fab item-right (click)="save()" class="fabicon">
+    Save
+  </button>
+</ion-buttons>
 </ion-content>
