@@ -19,10 +19,10 @@
   <textarea rows=5 cols=40 class="txtarea">{{match}}</textarea>
   <button ion-button (click)="push()">Push</button>
   <button ion-button right (click)="pop()">Pop</button>
-  
+ 
   <ion-card>
     <ion-card-content>
-      {{savecontent}}
+      <div id="content" #content>{{savecontent}}</div>
     </ion-card-content>
   </ion-card>
   <ion-buttons>

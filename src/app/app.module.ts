@@ -7,7 +7,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LanguageService } from '../services/language.service'
-
+import { File } from '@ionic-native/file';
+import { FileOpener } from '@ionic-native/file-opener';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
 @NgModule({
   declarations: [
@@ -27,8 +28,12 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition';
     StatusBar,
     SplashScreen,
     SpeechRecognition,
-    LanguageService,    
+    LanguageService, 
+    File,
+    FileOpener,   
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
-export class AppModule {}
+export class AppModule {
+
+}

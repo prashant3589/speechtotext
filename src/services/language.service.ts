@@ -1,4 +1,4 @@
-import { LanguageCode } from './../Models/languagecode';
+import { LanguageCode } from "./../Models/LanguageCode";
 import { Platform } from 'ionic-angular';
 export class LanguageService {
     public languageCode: LanguageCode;

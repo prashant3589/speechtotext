@@ -1,11 +1,16 @@
-import { AppModule } from './../../app/app.module';
-import { Component } from '@angular/core';
+
+
+import { Component, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
-import { Observable } from 'rxjs/Observable';
-import { ChangeDetectorRef } from '@angular/core';
-import { LanguageCode } from '../../models/languagecode';
+import { LanguageCode } from "../../models/LanguageCode";
 import { LanguageService } from '../../services/language.service'
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import { File } from '@ionic-native/file';
+import { FileOpener } from '@ionic-native/file-opener';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -19,7 +24,9 @@ export class HomePage {
   languages: Array<LanguageCode> = [];
   languageload = [];
   toggleswitch:boolean=false;
-  constructor(public navCtrl: NavController, private speechRecognition: SpeechRecognition, private plt: Platform, private cd: ChangeDetectorRef, private languageService: LanguageService) {
+  @ViewChild('content') content :ElementRef;
+  pdfObj = null;
+  constructor(public navCtrl: NavController, private speechRecognition: SpeechRecognition, private plt: Platform, private cd: ChangeDetectorRef, private languageService: LanguageService ,private file: File, private fileOpener: FileOpener) {
     this.getPermission();
     this.savecontent = ' ';
     this.isRecording = false;
@@ -98,6 +105,39 @@ export class HomePage {
       this.savecontent = this.savecontent.slice(0, startindex);
     }
   }
-  save() { } //to do
+  save() {
+    //let doc= new jspdf();
+    //let specialElementHandlers ={
+    //  '#editor':function(element,render){return true;}
+    //}
+    //let content=this.content.nativeElement;
+    //doc.fromHTML(content.innerHTML,15,15,{
+    //  'width':190,
+    //  'elementHandlers':specialElementHandlers
+    //});
+    //doc.save('notes.pdf');
+    //pdfmake
+
+    var docDefinition = {
+      content: this.content.nativeElement,
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+        },
+        subheader: {
+          fontSize: 14,
+          bold: true,
+          margin: [0, 15, 0, 0]
+        },
+        story: {
+          italic: true,
+          alignment: 'center',
+          width: '50%',
+        }
+      }
+   }
+   this.pdfObj = pdfMake.createPdf(docDefinition);
+  }
 }
 
