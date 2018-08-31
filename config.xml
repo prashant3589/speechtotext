@@ -1,4 +1,3 @@
-
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>jarviswrite</name>
@@ -90,5 +89,6 @@
     <allow-navigation href="http://192.168.1.73:8103" />
     <allow-navigation href="http://192.168.1.73:8104" />
     <allow-navigation href="http://192.168.1.73:8102" />
-    <engine name="android" spec="7.1.1" />
+    <engine name="browser" spec="5.0.4" />
+    <engine name="android" spec="7.0.0" />
 </widget>

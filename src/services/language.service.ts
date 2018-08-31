@@ -7,7 +7,7 @@ export class LanguageService {
     initial: number = 0;
     constructor() {
        this
-        this.rawObject = [{ key: 'English', value: 'en-US' }, { key: 'German', value: 'de' }, { key: 'Swedish', value: 'sv' }, { key: 'Marathi', value: 'mr-IN' }]
+        this.rawObject = [{ key: 'English', value: 'en-US' }, { key: 'German', value: 'de' }, { key: 'Swedish', value: 'sv' }]
     }
     getlanguages():Array<LanguageCode> {
         this.rawObject.forEach(element => {

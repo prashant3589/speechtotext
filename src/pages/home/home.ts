@@ -119,7 +119,7 @@ export class HomePage {
     //pdfmake
 
     var docDefinition = {
-      content: this.content.nativeElement,
+      content: this.savecontent,
       styles: {
         header: {
           fontSize: 18,
@@ -138,6 +138,15 @@ export class HomePage {
       }
    }
    this.pdfObj = pdfMake.createPdf(docDefinition);
+   this.pdfObj.getBuffer((buffer) => {
+    var blob = new Blob([buffer], { type: 'application/pdf' });
+
+    // Save the PDF to the data Directory of our App
+    this.file.writeFile(this.file.dataDirectory, 'notes.pdf', blob, { replace: true }).then(fileEntry => {
+      // Open the PDf with the correct OS tools
+      this.fileOpener.open(this.file.dataDirectory + 'notes.pdf', 'application/pdf');
+    })
+  });
   }
 }
 
